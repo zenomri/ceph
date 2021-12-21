@@ -38,7 +38,7 @@
 #include "cls/rgw/cls_rgw_types.h"
 #include "include/rados/librados.hpp"
 #include "rgw_public_access.h"
-#include "common/tracer.h"
+#include "common/tracer_rgw.h"
 
 namespace ceph {
   class Formatter;

@@ -390,6 +390,11 @@ if(WITH_JAEGER)
   set(HAVE_JAEGER TRUE)
 endif()
 
+option(WITH_JAEGER_RGW "Enable jaegertracing and it's dependent libraries in RGW" OFF)
+if(WITH_JAEGER_RGW)
+  set(HAVE_JAEGER_RGW TRUE)
+endif()
+
 #option for RGW
 option(WITH_RADOSGW "Rados Gateway is enabled" ON)
 option(WITH_RADOSGW_BEAST_OPENSSL "Rados Gateway's Beast frontend uses OpenSSL" ON)

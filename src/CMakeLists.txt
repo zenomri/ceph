@@ -395,6 +395,7 @@ set(libcommon_files
   xxHash/xxhash.c
   common/error_code.cc
   common/tracer.cc
+  common/tracer_rgw.cc
   log/Log.cc
   mon/MonCap.cc
   mon/MonClient.cc
@@ -428,7 +429,7 @@ target_compile_definitions(common-objs PRIVATE
   $<TARGET_PROPERTY:fmt::fmt,INTERFACE_COMPILE_DEFINITIONS>)
 add_dependencies(common-objs legacy-option-headers)
 
-if(WITH_JAEGER)
+if(WITH_JAEGER OR WITH_JAEGER_RGW)
   find_package(thrift 0.13.0 REQUIRED)
   include(BuildOpentelemetry)
   build_opentelemetry()
@@ -497,7 +498,7 @@ if(WITH_DPDK)
   list(APPEND ceph_common_deps common_async_dpdk)
 endif()
 
-if(WITH_JAEGER)
+if(WITH_JAEGER OR WITH_JAEGER_RGW)
   list(APPEND ceph_common_deps ${jaeger_base})
 endif()
 

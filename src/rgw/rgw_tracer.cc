@@ -7,10 +7,10 @@
 namespace tracing {
 namespace rgw {
 
-#ifdef HAVE_JAEGER
-thread_local tracing::Tracer tracer("rgw");
+#ifdef HAVE_JAEGER_RGW
+thread_local tracing::Tracer_RGW tracer("rgw");
 #else // !HAVE_JAEGER
-tracing::Tracer tracer;
+tracing::Tracer_RGW tracer;
 #endif
 
 } // namespace rgw

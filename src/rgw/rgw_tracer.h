@@ -1,7 +1,7 @@
 // -*- mode:C++; tab-width:8; c-basic-offset:2; indent-tabs-mode:t -*-
 // vim: ts=8 sw=2 smarttab
 #pragma once
-#include "common/tracer.h"
+#include "common/tracer_rgw.h"
 
 #include "rgw_common.h"
 
@@ -19,9 +19,9 @@ const auto REQUEST = "request";
 const auto MULTIPART = "multipart_upload ";
 
 #ifdef HAVE_JAEGER
-extern thread_local tracing::Tracer tracer;
+extern thread_local tracing::Tracer_RGW tracer;
 #else
-extern tracing::Tracer tracer;
+extern tracing::Tracer_RGW tracer;
 #endif
 
 } // namespace rgw
@@ -32,7 +32,7 @@ static inline void extract_span_context(const rgw::sal::Attrs& attr, jspan_conte
   if (trace_iter != attr.end()) {
     try {
       auto trace_bl_iter = trace_iter->second.cbegin();
-      tracing::decode(span_ctx, trace_bl_iter);
+      tracing::decode_RGW(span_ctx, trace_bl_iter);
     } catch (buffer::error& err) {}
   }
 }

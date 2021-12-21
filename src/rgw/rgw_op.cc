@@ -6151,11 +6151,12 @@ void RGWInitMultipart::execute(optional_yield y)
   if (rgw::sal::Object::empty(s->object.get()))
     return;
 
+  #ifdef HAVE_JAEGER_RGW
   if (multipart_trace) {
-    tracing::encode(multipart_trace->GetContext(), tracebl);
+    tracing::encode_RGW(multipart_trace->GetContext(), tracebl);
     attrs[RGW_ATTR_TRACE] = tracebl;
   }
-
+  #endif
   policy.encode(aclbl);
   attrs[RGW_ATTR_ACL] = aclbl;
 

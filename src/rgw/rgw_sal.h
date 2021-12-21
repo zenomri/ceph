@@ -17,7 +17,7 @@
 
 #include "rgw_user.h"
 #include "rgw_notify_event_type.h"
-#include "common/tracer.h"
+#include "common/tracer_rgw.h"
 
 class RGWGetDataCB;
 struct RGWObjState;
