@@ -57,7 +57,7 @@
 #ifdef WITH_RADOSGW_DBSTORE
 #include "rgw_sal_dbstore.h"
 #endif
-
+#include "rgw_tracer.h"
 #include "services/svc_zone.h"
 
 #ifdef HAVE_SYS_PRCTL_H
@@ -662,11 +662,11 @@ int radosgw_Main(int argc, const char **argv)
     cerr << "warning: unable to set dumpable flag: " << cpp_strerror(errno) << std::endl;
   }
 #endif
-
+  tracing::rgw::tracer.init("rgw");
   wait_shutdown();
 
   derr << "shutting down" << dendl;
-
+  tracing::rgw::tracer.shutdown();
   reloader.reset(); // stop the realm reloader
 
   for (list<RGWFrontend *>::iterator liter = fes.begin(); liter != fes.end();

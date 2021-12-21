@@ -19,7 +19,7 @@ const auto REQUEST = "request";
 const auto MULTIPART = "multipart_upload ";
 
 #ifdef HAVE_JAEGER
-extern thread_local tracing::Tracer_RGW tracer;
+extern tracing::Tracer_RGW tracer;
 #else
 extern tracing::Tracer_RGW tracer;
 #endif
