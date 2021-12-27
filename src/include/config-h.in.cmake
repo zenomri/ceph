@@ -172,6 +172,9 @@
 /* Define if you want to use Jaeger */
 #cmakedefine HAVE_JAEGER
 
+/* Define if you want to use Jaeger in RGW */
+#cmakedefine HAVE_JAEGER_RGW
+
 /* Define if you want to use EVENTTRACE */
 #cmakedefine WITH_EVENTTRACE
 
